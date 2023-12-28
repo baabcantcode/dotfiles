@@ -45,4 +45,5 @@ vim.keymap.set("n", "<leader>nr", ":NvimTreeRefresh<CR>", {}) -- refresh
 vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", {}) -- search file
 
 -- Terminal
-vim.keymap.set("n", "<leader>tt", ":NeotermToggle<CR>", {})
+vim.keymap.set("n", "<leader>tt", ":NeotermToggle<CR>", { desc = "Show terminal" })
+vim.keymap.set("t", "<esc>", "<cmd>:NeotermToggle<CR>", { desc = "Hide terminal" })
