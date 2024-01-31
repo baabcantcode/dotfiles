@@ -1,6 +1,7 @@
 -- map some useful common commands from other editors
 vim.keymap.set({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>", { desc = "Save File" })
 vim.keymap.set({ "i", "n", "v" }, "<C-f>", "<esc>/", { desc = "Find in file" })
+-- :redo is redo still btw
 vim.keymap.set({ "i", "n", "v" }, "<C-r>", "<esc>:%s//gc<LEFT><LEFT><LEFT>", { desc = "Replace in file" })
 vim.keymap.set({ "i", "n" }, "<C-q>", "<esc>:wq<CR>", { desc = "Save & exit" })
 vim.keymap.set("i", "<C-z>", "<esc>:u<CR>i", { desc = "Undo" })
@@ -47,3 +48,12 @@ vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", {}) -- search file
 -- Terminal
 vim.keymap.set("n", "<leader>tt", ":NeotermToggle<CR>", { desc = "Show terminal" })
 vim.keymap.set("t", "<esc>", "<cmd>:NeotermToggle<CR>", { desc = "Hide terminal" })
+
+-- primeagen remaps
+vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
