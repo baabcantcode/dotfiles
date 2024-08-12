@@ -144,7 +144,7 @@ require("mason").setup({
 	max_concurrent_installers = 9,
 })
 require("mason-lspconfig").setup({
-	ensure_installed = { "tsserver", "rust_analyzer" },
+	ensure_installed = { "tsserver", "rust_analyzer", "gopls","ocaml-lsp" },
 	handlers = {
 		lsp_zero.default_setup,
 		lua_ls = function()
@@ -171,3 +171,4 @@ cmp.setup({
 		["<C-y>"] = cmp.mapping.complete(),
 	}),
 })
+
