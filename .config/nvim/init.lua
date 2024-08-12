@@ -144,7 +144,8 @@ require("mason").setup({
 	max_concurrent_installers = 9,
 })
 require("mason-lspconfig").setup({
-	ensure_installed = { "tsserver", "rust_analyzer", "gopls","ocaml-lsp" },
+	ensure_installed = { "tsserver", "rust_analyzer", "gopls", "templ", "bashls", "tailwindcss", "lua_ls", "zls", "yamlls", "sqlls", "pyright", "intelephense" },
+    automatic_installation = true,
 	handlers = {
 		lsp_zero.default_setup,
 		lua_ls = function()

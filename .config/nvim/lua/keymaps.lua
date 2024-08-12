@@ -2,11 +2,14 @@
 vim.keymap.set({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>", { desc = "Save File" })
 vim.keymap.set({ "i", "n", "v" }, "<C-f>", "<esc>/", { desc = "Find in file" })
 -- :redo is redo still btw
-vim.keymap.set({ "i", "n", "v" }, "<C-r>", "<esc>:%s//gc<LEFT><LEFT><LEFT>", { desc = "Replace in file" })
+vim.keymap.set({ "i", "n", "v" }, "<C-r>", "<esc><leader>tt<CR>:%s//gc<LEFT><LEFT><LEFT>", { desc = "Replace in file" })
 vim.keymap.set({ "i", "n" }, "<C-q>", "<esc>:wq<CR>", { desc = "Save & exit" })
 vim.keymap.set("i", "<C-z>", "<esc>:u<CR>i", { desc = "Undo" })
 vim.keymap.set("n", "<C-z>", "<esc>:u<CR>", { desc = "Undo" })
 vim.keymap.set("v", "<C-z>", "<esc>", { desc = "Undo" })
+vim.keymap.set("n", "u", "<CR>", { desc = "Removed undo, use :undo" })
+vim.keymap.set("n", "r", "<CR>", { desc = "Removed redo, use :redo" })
+
 
 -- tabs
 vim.keymap.set("n", "[b", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
@@ -36,6 +39,13 @@ vim.keymap.set("n", "<leader>fd", function()
 		file_ignore_patterns = { ".git/", "^node_modules/" },
 	})
 end, { desc = "Fuzzy dotfiles" })
+vim.keymap.set("n", "<leader>fa", function()
+	require("telescope.builtin").find_files({
+		hidden = true,
+		no_ignore = true,
+		file_ignore_patterns = { ".git/" },
+	})
+end, { desc = "Fuzzy all files" })
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Fuzzy grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy buffer" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy help" })
@@ -51,7 +61,8 @@ vim.keymap.set("t", "<esc>", "<cmd>:NeotermToggle<CR>", { desc = "Hide terminal"
 
 -- primeagen remaps
 vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- modified cuz its bad
+vim.keymap.set({ "n", "v" }, "<leader>bf", vim.lsp.buf.format)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])

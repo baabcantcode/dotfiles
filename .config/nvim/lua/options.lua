@@ -1,7 +1,6 @@
 local cmd = vim.cmd
 local opt = vim.opt
 local g = vim.g
-local s = vim.s
 local indent = 4
 
 cmd([[
@@ -14,6 +13,7 @@ opt.fileencoding = "utf-8" -- the encoding written to a file
 opt.encoding = "utf-8" -- the encoding
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
+opt.synmaxcol = 500 -- disable syntax resolution when the column gets huge
 
 -- indention
 opt.autoindent = true -- auto indentation
@@ -50,8 +50,8 @@ opt.cmdheight = 0 -- more space in the neovim command line for displaying messag
 
 opt.mouse = "a" -- allow the mouse to be used in neovim
 opt.number = true -- set numbered lines
-opt.scrolloff = 18 -- minimal number of screen lines to keep above and below the cursor
-opt.sidescrolloff = 3 -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
+opt.scrolloff = 7 -- minimal number of screen lines to keep above and below the cursor
+opt.sidescrolloff = 10 -- minimal number of screen columns to keep to the left and right (horizontal) of the cursor if wrap is `false`
 opt.signcolumn = "yes" -- always show the sign column, otherwise it would shift the text each time
 opt.splitbelow = true -- open new split below
 opt.splitright = true -- open new split to the right
@@ -128,6 +128,7 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 -- Colorscheme
--- By default, use rose-pine
 cmd.colorscheme("tokyonight")
 vim.wo.relativenumber = true
+g.autoformat = false
+

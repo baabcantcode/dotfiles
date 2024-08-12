@@ -23,16 +23,6 @@ autocmd("BufEnter", {
 	command = "set fo-=c fo-=r fo-=o",
 })
 
-autocmd("BufNewFile", {
-	pattern = "*.html.tmpl",
-	command = "setlocal filetype=html",
-})
-
-autocmd("BufRead", {
-	pattern = "*.html.tmpl",
-	command = "setlocal filetype=html",
-})
-
 autocmd("Filetype", {
 	pattern = { "xml", "html", "xhtml", "css", "scss", "javascript", "typescript", "yaml", "lua" },
 	command = "setlocal shiftwidth=4 tabstop=4",

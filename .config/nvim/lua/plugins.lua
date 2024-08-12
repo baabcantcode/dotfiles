@@ -195,7 +195,7 @@ return {
 			},
 		},
 	},
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
+	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x", opts = { autoformat = false } },
 	{ "williamboman/mason-lspconfig.nvim" },
 	{ "neovim/nvim-lspconfig" },
 	{ "hrsh7th/cmp-nvim-lsp" },
