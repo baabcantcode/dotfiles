@@ -28,6 +28,7 @@ return {
         },
         opts = {
             ensure_installed = "all",
+
             highlight = {
                 enable = true,
                 use_languagetree = true,
@@ -38,6 +39,7 @@ return {
             autotag = {
                 enable = true,
             },
+
             context_commentstring = {
                 enable = true,
                 enable_autocmd = false,
@@ -189,6 +191,15 @@ return {
                     -- it applies to every language server without a "custom handler"
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
+                    end,
+                    ['tsserver'] = function()
+                        require("lspconfig").tsserver.setup({
+                            settings = {
+                                implicitProjectConfiguration = {
+                                    checkJs = true
+                                },
+                            }
+                        })
                     end,
                 }
             })
