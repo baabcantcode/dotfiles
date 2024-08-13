@@ -50,19 +50,12 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Fuzzy grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy buffer" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy help" })
 
--- NvimTree
-vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<CR>", {}) -- open/close
-vim.keymap.set("n", "<leader>nr", ":NvimTreeRefresh<CR>", {}) -- refresh
-vim.keymap.set("n", "<leader>nf", ":NvimTreeFindFile<CR>", {}) -- search file
-
 -- Terminal
 vim.keymap.set("n", "<leader>tt", ":NeotermToggle<CR>", { desc = "Show terminal" })
 vim.keymap.set("t", "<esc>", "<cmd>:NeotermToggle<CR>", { desc = "Hide terminal" })
 
 -- primeagen remaps
 vim.keymap.set("x", "<leader>p", [["_dP]])
--- modified cuz its bad
-vim.keymap.set({ "n", "v" }, "<leader>bf", vim.lsp.buf.format)
 
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
