@@ -69,32 +69,7 @@ return {
         lazy = false,
         config = true,
     },
-    {
-        'hrsh7th/nvim-cmp',
-        lazy = false,
-        event = 'InsertEnter',
-        dependencies = {
-            { 'L3MON4D3/LuaSnip' },
-        },
-        config = function()
-            local cmp = require('cmp')
 
-            cmp.setup({
-                sources = {
-                    { name = "path" },
-                    { name = "nvim_lsp" },
-                    { name = "nvim_lua" },
-                },
-                formatting = require('lsp-zero').cmp_format(),
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-                    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-                    ["<tab>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-y>"] = cmp.mapping.complete(),
-                }),
-            })
-        end
-    },
     {
         'neovim/nvim-lspconfig',
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
