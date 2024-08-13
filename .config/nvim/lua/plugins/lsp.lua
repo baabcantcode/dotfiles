@@ -69,10 +69,9 @@ return {
         lazy = false,
         config = true,
     },
-
-    -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
+        lazy = false,
         event = 'InsertEnter',
         dependencies = {
             { 'L3MON4D3/LuaSnip' },
@@ -82,23 +81,20 @@ return {
 
             cmp.setup({
                 sources = {
-                    { name = 'nvim_lsp' },
+                    { name = "path" },
+                    { name = "nvim_lsp" },
+                    { name = "nvim_lua" },
                 },
+                formatting = require('lsp-zero').cmp_format(),
                 mapping = cmp.mapping.preset.insert({
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+                    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+                    ["<tab>"] = cmp.mapping.confirm({ select = true }),
+                    ["<C-y>"] = cmp.mapping.complete(),
                 }),
-                snippet = {
-                    expand = function(args)
-                        vim.snippet.expand(args.body)
-                    end,
-                },
             })
         end
     },
-
-    -- LSP
     {
         'neovim/nvim-lspconfig',
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
