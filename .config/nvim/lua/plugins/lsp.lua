@@ -27,8 +27,7 @@ return {
             },
         },
         opts = {
-            ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "go", "typescript", "yaml", "zig", "tsx", "toml", "json", "gotmpl", "sql", "rust", "regex", "php", "phpdoc", "jsdoc", "javascript", "gleam", "gitignore", "gitattributes", "dockerfile", "css", "csv", "c_sharp", "bash", "angular" },
-
+            ensure_installed = "all",
             highlight = {
                 enable = true,
                 use_languagetree = true,
@@ -39,7 +38,6 @@ return {
             autotag = {
                 enable = true,
             },
-
             context_commentstring = {
                 enable = true,
                 enable_autocmd = false,
