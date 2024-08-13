@@ -39,7 +39,7 @@ return {
             autotag = {
                 enable = true,
             },
-
+            disable = { "jsdoc", "comment" }, -- sadly jsdoc is too slow, we'll just leave comments unparsed
             context_commentstring = {
                 enable = true,
                 enable_autocmd = false,
