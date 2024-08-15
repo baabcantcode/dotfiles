@@ -27,12 +27,29 @@ return {
         end,
     },
     {
+        "LunarVim/bigfile.nvim",
+        lazy = false,
+        opts = {
+            filesize = 2,
+            pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
+            features = { -- features to disable
+                "indent_blankline",
+                "illuminate",
+                "lsp",
+                "treesitter",
+                "syntax",
+                "matchparen",
+                "vimopts",
+                "filetype",
+            },
+        },
+    },
+    {
         "numToStr/Comment.nvim",
         opts = {
             toggler = {
                 line = "<C-/>",
             },
-            -- add any options here
         },
         opleader = {
             line = "gc",

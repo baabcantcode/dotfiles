@@ -28,31 +28,10 @@ return {
         },
         opts = {
             ensure_installed = "all",
-
             highlight = {
                 enable = true,
-                use_languagetree = true,
             },
-            indent = {
-                enable = true,
-            },
-            autotag = {
-                enable = true,
-            },
-            disable = { "jsdoc", "comment" }, -- sadly jsdoc is too slow, we'll just leave comments unparsed
-            context_commentstring = {
-                enable = true,
-                enable_autocmd = false,
-            },
-            refactor = {
-                highlight_definitions = {
-                    enable = true,
-                },
-                highlight_current_scope = {
-
-                    enable = false,
-                },
-            },
+            ignore_install = { "jsdoc", "comment" }, -- sadly jsdoc is too slow, we'll just leave comments unparsed
         },
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
@@ -69,7 +48,6 @@ return {
         lazy = false,
         config = true,
     },
-
     {
         'neovim/nvim-lspconfig',
         cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
@@ -120,6 +98,12 @@ return {
                 vim.keymap.set({ 'n', 'x' }, '<leader>bf', function()
                     vim.lsp.buf.format({ async = false })
                 end, opts)
+                vim.keymap.set("n", "[d", function()
+                    vim.diagnostic.goto_next()
+                end, opts)
+                vim.keymap.set("n", "]d", function()
+                    vim.diagnostic.goto_prev()
+                end, opts)
                 vim.keymap.set("n", "<leader>rn", function()
                     vim.lsp.buf.rename()
                 end, opts)
@@ -128,12 +112,6 @@ return {
                 end, opts)
                 vim.keymap.set("n", "<leader>rd", function()
                     vim.diagnostic.open_float()
-                end, opts)
-                vim.keymap.set("n", "[d", function()
-                    vim.diagnostic.goto_next()
-                end, opts)
-                vim.keymap.set("n", "]d", function()
-                    vim.diagnostic.goto_prev()
                 end, opts)
                 vim.keymap.set("n", "<leader>ra", function()
                     vim.lsp.buf.code_action()
