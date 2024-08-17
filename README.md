@@ -48,14 +48,14 @@ this is in order of how much i care about it.
 * treesitter
 * buffers in tabs
  - harpoon better?
-* terminal in floating buffer <leader>tt and <esc> / <leader>tt to close
+* terminal in floating buffer \<leader\>tt and \<esc\> / \<leader\>tt to close
 * git blame inline
 * map ctrl f + ctrl r + ctrl s to work similarly to everywhere else
 * telescope with fuzzy finding
-  - supports ignoring git files + hidden files for file name searching with <leader>ff
-  - supports grepping active directory with <leader>fg
-  - supports all file name searching with <leader>fa
-  - <leader>fd is broken ;_;
+  - supports ignoring git files + hidden files for file name searching with \<leader\>ff
+  - supports grepping active directory with \<leader\>fg
+  - supports all file name searching with \<leader\>fa
+  - \<leader\>fd is broken ;_;
 * highlighting text on copy (you have no idea how useful this is lol)
 * autocomplete on the right button, i disagree with everyone that doesnt use the right button. there is only one button.
 * large files
@@ -67,7 +67,7 @@ keep adding things to this list til ive gone completely nuts
 
 * should add a new landing page that doesnt change projects on me - i dont like projects, just start neovim in the right (write lol) directory duh.
 * fix ctrl r
-* fix <leader>fd - its not picking up dot files anymore, like why my brain dumb?
+* fix \<leader\>fd - its not picking up dot files anymore, like why my brain dumb?
 * write a paste hotkey / autocmd that maintains to-paste buffer (wtf is the default to copy over the newly deleted buffer, who wants that??????????????????????????????????????????????????????????????????????????????????????) (primeagen?)
 * better snippets - i haven't gotten it working well yet, not sure i ever liked snippets tho...
 * use / find refactor code actions for highlighted buffers. forgot that i like that one (e.g. move v-buffer lines to a newly named fn in same namespace)
