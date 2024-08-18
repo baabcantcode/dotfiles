@@ -32,7 +32,7 @@ return {
         opts = {
             filesize = 2,
             pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-            features = { -- features to disable
+            features = {       -- features to disable
                 "indent_blankline",
                 "illuminate",
                 "lsp",
@@ -55,7 +55,71 @@ return {
             line = "gc",
             block = "gb",
         },
-        lazy = false,
+        event = "FileType",
     },
-
+    {
+        "startup-nvim/startup.nvim",
+        lazy = false,
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+        opts = {
+            header = {
+                type = "text",
+                oldfiles_directory = false,
+                align = "center",
+                fold_section = false,
+                title = "Header",
+                margin = 2,
+                content = require("startup.headers").hydra_header,
+                highlight = "Statement",
+                default_color = "",
+                oldfiles_amount = 0,
+            },
+            -- name which will be displayed and command
+            body = {
+                type = "mapping",
+                oldfiles_directory = false,
+                align = "center",
+                fold_section = false,
+                title = "Startup Commands",
+                margin = 3,
+                content = {
+                    { " Find File",     "Telescope find_files",            "<leader>ff" },
+                    { "󰍉 Find Word",     "Telescope live_grep",             "<leader>fg" },
+                    { " Open Terminal", "NeotermToggle",                   "<leader>tt" },
+                    { " Colorschemes",  "Telescope colorscheme",           "<leader>fc" },
+                    { " New File",      "lua require'startup'.new_file()", "<leader>nf" },
+                },
+                highlight = "String",
+                default_color = "",
+                oldfiles_amount = 0,
+            },
+            footer = {
+                type = "text",
+                oldfiles_directory = false,
+                align = "center",
+                fold_section = false,
+                title = "Footer",
+                margin = 3,
+                content = require("startup.functions").quote(),
+                highlight = "Constant",
+                default_color = "",
+                oldfiles_amount = 0,
+            },
+            options = {
+                mapping_keys = true,
+                cursor_column = 0.5,
+                empty_lines_between_mappings = true,
+                disable_statuslines = true,
+                paddings = { 1, 3, 3, 0 },
+            },
+            mappings = {
+                execute_command = "<CR>",
+            },
+            colors = {
+                background = "#1f2227",
+                folded_section = "#56b6c2",
+            },
+            parts = { "header", "body", "footer" },
+        }
+    }
 }

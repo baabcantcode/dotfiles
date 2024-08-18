@@ -1,63 +1,50 @@
--- map some useful common commands from other editors
-vim.keymap.set({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>", { desc = "Save File" })
-vim.keymap.set({ "i", "n", "v" }, "<C-f>", "<esc>/", { desc = "Find in file" })
--- :redo is redo still btw
-vim.keymap.set({ "i", "n", "v" }, "<C-r>", "<esc><leader>tt<CR>:%s//gc<LEFT><LEFT><LEFT>", { desc = "Replace in file" })
-vim.keymap.set({ "i", "n" }, "<C-q>", "<esc>:wq<CR>", { desc = "Save & exit" })
-vim.keymap.set("i", "<C-z>", "<esc>:u<CR>i", { desc = "Undo" })
-vim.keymap.set("n", "<C-z>", "<esc>:u<CR>", { desc = "Undo" })
-vim.keymap.set("v", "<C-z>", "<esc>", { desc = "Undo" })
-vim.keymap.set("n", "u", "<CR>", { desc = "Removed undo, use :undo" })
-vim.keymap.set("n", "r", "<CR>", { desc = "Removed redo, use :redo" })
+local setk = vim.keymap.set
 
+-- map some useful common commands from other editors
+setk({ "i", "n", "v" }, "<C-s>", "<esc>:w<CR>", { desc = "Save File" })
+setk({ "i", "n", "v" }, "<C-f>", "<esc>/", { desc = "Find in file" })
+-- :redo is redo still btw
+setk({ "i", "n", "v" }, "<C-r>", "<esc><CR>:%s//gc<LEFT><LEFT><LEFT>", { desc = "Replace in file", noremap = true, })
+setk({ "i", "n" }, "<C-q>", "<esc>:wq<CR>", { desc = "Save & exit" })
+setk("i", "<C-z>", "<esc>:undo<CR>i", { desc = "Undo" })
+setk("n", "<C-z>", "<esc>:undo<CR>", { desc = "Undo" })
+setk("v", "<C-z>", "<esc>", { desc = "Undo" })
+setk("n", "u", "<CR>", { desc = "Removed undo, use :undo" })
+setk("n", "r", "<CR>", { desc = "Removed redo, use :redo" })
 
 -- tabs
-vim.keymap.set("n", "[b", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]b", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>b1", "<Cmd>BufferGoto 1<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>b2", "<Cmd>BufferGoto 2<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>b3", "<Cmd>BufferGoto 3<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>b4", "<Cmd>BufferGoto 4<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { noremap = true, silent = true })
+setk("n", "[b", "<Cmd>BufferPrevious<CR>", { noremap = true, silent = true })
+setk("n", "]b", "<Cmd>BufferNext<CR>", { noremap = true, silent = true })
+setk("n", "<leader>b1", "<Cmd>BufferGoto 1<CR>", { noremap = true, silent = true })
+setk("n", "<leader>b2", "<Cmd>BufferGoto 2<CR>", { noremap = true, silent = true })
+setk("n", "<leader>b3", "<Cmd>BufferGoto 3<CR>", { noremap = true, silent = true })
+setk("n", "<leader>b4", "<Cmd>BufferGoto 4<CR>", { noremap = true, silent = true })
+setk("n", "<leader>bd", "<cmd>bd<CR>", { noremap = true, silent = true })
 
 -- Move around splits
-vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Left window" })
-vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Down window" })
-vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Up window" })
-vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Right window" })
-
--- Reload configuration without restarting nvim
--- vim.keymap.set("n", "<leader>r", ":so %<CR>", { desc = "Reload source file" })
+setk("n", "<leader>wh", "<C-w>h", { desc = "Left window" })
+setk("n", "<leader>wj", "<C-w>j", { desc = "Down window" })
+setk("n", "<leader>wk", "<C-w>k", { desc = "Up window" })
+setk("n", "<leader>wl", "<C-w>l", { desc = "Right window" })
 
 -- Telescope
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Fuzzy file" })
-vim.keymap.set("n", "<leader>fd", function()
-	require("telescope.builtin").find_files({
-		hidden = true,
-		no_ignore = false,
-		file_ignore_patterns = { ".git/", "^node_modules/" },
-	})
-end, { desc = "Fuzzy dotfiles" })
-vim.keymap.set("n", "<leader>fa", function()
-	require("telescope.builtin").find_files({
-		hidden = true,
-		no_ignore = true,
-		file_ignore_patterns = { ".git/" },
-	})
-end, { desc = "Fuzzy all files" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Fuzzy grep" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Fuzzy buffer" })
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Fuzzy help" })
+setk("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy file" })
+setk("n", "<leader>fd", "<cmd>Telescope git_files hidden=true<CR>", { desc = "Fuzzy git files" })
+setk("n", "<leader>fa", "<cmd>Telescope find_files hidden=true<CR>", { desc = "Fuzzy all files" })
+setk("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Fuzzy grep" })
+setk("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Fuzzy buffer" })
+setk("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Fuzzy help" })
+setk("n", "<leader>fc", "<cmd>Telescope colorscheme<CR>", { desc = "Fuzzy colorscheme" })
 
 -- Terminal
-vim.keymap.set("n", "<leader>tt", ":NeotermToggle<CR>", { desc = "Show terminal" })
-vim.keymap.set("t", "<esc>", "<cmd>:NeotermToggle<CR>", { desc = "Hide terminal" })
+setk("n", "<leader>tt", "<cmd>:NeotermToggle<CR>", { desc = "Show terminal" })
+setk("t", "<esc>", "<cmd>:NeotermToggle<CR>", { desc = "Hide terminal" })
 
 -- primeagen remaps
-vim.keymap.set("x", "<leader>p", [["_dP]])
+setk("x", "<leader>p", [["_dP]])
 
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+setk({ "n", "v" }, "<leader>y", [["+y]])
+setk("n", "<leader>Y", [["+Y]])
 
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+setk({ "n", "v" }, "<leader>d", [["_d]])
+
