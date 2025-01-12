@@ -134,15 +134,15 @@ return {
             })
 
             require('mason-lspconfig').setup({
-                ensure_installed = { "tsserver", "rust_analyzer", "gopls", "templ", "bashls", "tailwindcss", "lua_ls", "zls", "yamlls", "sqlls", "pyright", "intelephense" },
+                ensure_installed = { "ts_ls", "rust_analyzer", "gopls", "templ", "bashls", "tailwindcss", "lua_ls", "zls", "yamlls", "sqlls", "pyright", "intelephense" },
                 handlers = {
                     -- this first function is the "default handler"
                     -- it applies to every language server without a "custom handler"
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
                     end,
-                    ['tsserver'] = function()
-                        require("lspconfig").tsserver.setup({
+                    ['ts_ls'] = function()
+                        require("lspconfig").ts_ls.setup({
                             settings = {
                                 implicitProjectConfiguration = {
                                     checkJs = true
