@@ -133,6 +133,9 @@ return {
                 capabilities = require('cmp_nvim_lsp').default_capabilities()
             })
 
+            -- other servers that aren't mason supported
+            require('lspconfig').gdscript.setup({})
+
             require('mason-lspconfig').setup({
                 ensure_installed = { "ts_ls", "rust_analyzer", "gopls", "templ", "bashls", "tailwindcss", "lua_ls", "zls", "yamlls", "sqlls", "pyright", "intelephense" },
                 handlers = {
