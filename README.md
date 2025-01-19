@@ -26,13 +26,13 @@ open neovim and wait for it to dl everything. note that neovim is still kinda cr
 they need to reparse the whole buffer. just reopen neovim, generally always fixes. most frequently occurs when making a major config / project
 setup level change while in neovim.
 
-## last update regressions
+## recent update improvements
 
-ctrl r - kinda works sometimes, i need to find out what trying to override my maps
+restored ctrl r
 
-<leader>fd is the same as <leader>ff atm
+restored \<leader\>fd functionality - now based on git files 
 
-## last update improvements
+added a slightly better version of hyper + a new colorscheme command - \<leader\>fc
 
 big files is supported now with a new plugin - 2MB+ files wont have e.g. treesitter and lsps get attached.
 
